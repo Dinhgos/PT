@@ -1,0 +1,1 @@
+start java -jar --module-path "java_fx\javafx-sdk-11.0.2\lib" --add-modules javafx.controls,javafx.fxml SP.jar model1

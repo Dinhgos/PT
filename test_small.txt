@@ -1,0 +1,144 @@
+# Data pro semestralni praci KIV/PT 2020/2021
+# Vytvoreno systemem "Lubos", 31.8.2020.
+#
+# prazdne radky nebo radky zacinajici znakem # se ingoruji
+# v opacnem pripade jsou na kazde radce ciselne hodnoty oddelene mezerou
+# data jsou popsana vzdy nad prislusnym blokem dat, bloky jsou oddelene
+# prazdnym radkem nasledujici radkem viditelne oznacenym vyrazem "BLOK:"
+
+# BLOK: pocet tovaren D, pocet supermarketu S, pocet druhu zbozi Z, pocet dni T
+# pouze jedna tovarna a jeden sklad s jednim druhem zbozi v dubnu.
+1 1 1 30
+
+# BLOK: Cena prevozu jednoho zbozi c_{s,d}
+#
+# c_{1,1} c_{2,1} ... c_{S,1}
+# c_{1,2} c_{2,2} ... c_{S,2}
+#    .      .    .      .
+#    .      .     .     .
+#    .      .      .    .
+# c_{1,D} c_{2,D} ... c_{S,D}
+# existuje jen jedna cena cesty
+1
+
+# BLOK: Pocatecni skladove zasoby q_{z,s}
+#
+# q_{1,1} q_{1,2} ... q_{1,S}
+# q_{2,1} q_{2,2} ... q_{2,S}
+#    .      .    .      .
+#    .      .     .     .
+#    .      .      .    .
+# q_{Z,1} q_{Z,2} ... q_{Z,S}
+# ze zacatku supermarket nic nema
+0
+
+# BLOK: Produkce tovaren p_{d,z,t}
+# p_{1,1,1} p_{2,1,1} .... p_{D,1,1}
+# p_{1,1,2} p_{2,1,2} .... p_{D,1,2}
+#      .         .    .         .
+#      .         .     .        .
+#      .         .      .       .
+# p_{1,1,T} p_{2,1,T} .... p_{D,1,T}
+# p_{1,2,1} p_{2,2,1} .... p_{D,2,1}
+# p_{1,2,2} p_{2,2,2} .... p_{D,2,2}
+#      .         .    .         .
+#      .         .     .        .
+#      .         .      .       .
+#      .         .       .      .
+# p_{1,Z,T} p_{2,Z,T} .... p_{D,Z,T}
+# kazdy den tovarna vyrobi deset zachodovych prkenek
+10
+10
+10
+10
+10
+10
+10
+10
+10
+10
+10
+10
+10
+10
+10
+10
+10
+10
+10
+10
+10
+10
+10
+10
+10
+10
+10
+10
+10
+10
+
+# BLOK: Poptavka zbozi r_{s,z,t}
+# r_{1,1,1} r_{2,1,1} .... r_{S,1,1}
+# r_{1,1,2} r_{2,1,2} .... r_{S,1,2}
+#      .         .    .         .
+#      .         .     .        .
+#      .         .      .       .
+# r_{1,1,T} r_{2,1,T} .... r_{S,1,T}
+# r_{1,2,1} r_{2,2,1} .... r_{S,2,1}
+# r_{1,2,2} r_{2,2,2} .... r_{S,2,2}
+#      .         .    .         .
+#      .         .     .        .
+#      .         .      .       .
+#      .         .       .      .
+# r_{1,Z,T} r_{2,Z,T} .... r_{S,Z,T}
+# supermarket chce jen 2 prkenka 1. den, takze 8 nakreckuje na potom
+2
+# opet chce jen dve, v rezerve ma 16
+2
+# 3. den uz chce 4, v rezerve tedy 16+6=22
+4
+# rezerva 4. den: 22+6=28
+4
+# rezerva 5. den: 28+4=32
+6
+# rezerva 6. den: 32+4=36
+6
+# rezerva 7. den: 36+2=38
+8
+# rezerva 8. den: 34+2=40
+8
+# rezerva 9. den: 40 -- ted spotrebuje to co se vyrobi
+10
+# rezerva 10. den: opet 40
+10
+# rezerva 11. den: 40-2=38 -- a sakra, bereme rezervy. Pokud si zasoby neukladame,
+# ("nekreckujeme") pak to bude zde uz nesplnitelna uloha
+12
+# rezerva 12. den: 38-2=36
+12
+# rezerva 13. den: 36-4=32
+14
+# rezerva 14. den: 32-4=28
+14
+# rezerva 15. den: 28-6=22
+16
+# rezerva 16. den: 22-6=16
+16
+# rezerva 17. den: 16-8=8 - to uz vypada zle
+18
+# rezerva 18. den: 8-8=0
+18
+# rezerva 19. den: 0-... a sakra... Lubosi, objednej zbozi z Ciny!!!!
+20
+20
+22
+22
+24
+24
+26
+26
+28
+28
+30
+30
