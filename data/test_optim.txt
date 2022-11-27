@@ -1,0 +1,95 @@
+# Data pro semestralni praci KIV/PT 2020/2021
+# Vytvoreno systemem "Lubos", 31.8.2020.
+#
+# prazdne radky nebo radky zacinajici znakem # se ingoruji
+# v opacnem pripade jsou na kazde radce ciselne hodnoty oddelene mezerou
+# data jsou popsana vzdy nad prislusnym blokem dat, bloky jsou oddelene
+# prazdnym radkem nasledujici radkem viditelne oznacenym vyrazem "BLOK:"
+
+# BLOK: pocet tovaren D, pocet supermarketu S, pocet druhu zbozi Z, pocet dni T
+2 2 2 2
+
+# BLOK: Cena prevozu jednoho zbozi c_{s,d}
+#
+# c_{1,1} c_{2,1} ... c_{S,1}
+# c_{1,2} c_{2,2} ... c_{S,2}
+#    .      .    .      .
+#    .      .     .     .
+#    .      .      .    .
+# c_{1,D} c_{2,D} ... c_{S,D}
+1 2
+2 1
+
+# BLOK: Pocatecni skladove zasoby q_{z,s}
+#
+# q_{1,1} q_{1,2} ... q_{1,S}
+# q_{2,1} q_{2,2} ... q_{2,S}
+#    .      .    .      .
+#    .      .     .     .
+#    .      .      .    .
+# q_{Z,1} q_{Z,2} ... q_{Z,S}
+1 1
+2 2
+
+# BLOK: Produkce tovaren p_{d,z,t}
+# p_{1,1,1} p_{2,1,1} .... p_{D,1,1}
+# p_{1,1,2} p_{2,1,2} .... p_{D,1,2}
+#      .         .    .         .
+#      .         .     .        .
+#      .         .      .       .
+# p_{1,1,T} p_{2,1,T} .... p_{D,1,T}
+# p_{1,2,1} p_{2,2,1} .... p_{D,2,1}
+# p_{1,2,2} p_{2,2,2} .... p_{D,2,2}
+#      .         .    .         .
+#      .         .     .        .
+#      .         .      .       .
+#      .         .       .      .
+# p_{1,Z,T} p_{2,Z,T} .... p_{D,Z,T}
+10 10
+10 10
+10 10
+10 10
+
+# BLOK: Poptavka zbozi r_{s,z,t}
+# r_{1,1,1} r_{2,1,1} .... r_{S,1,1}
+# r_{1,1,2} r_{2,1,2} .... r_{S,1,2}
+#      .         .    .         .
+#      .         .     .        .
+#      .         .      .       .
+# r_{1,1,T} r_{2,1,T} .... r_{S,1,T}
+# r_{1,2,1} r_{2,2,1} .... r_{S,2,1}
+# r_{1,2,2} r_{2,2,2} .... r_{S,2,2}
+#      .         .    .         .
+#      .         .     .        .
+#      .         .      .       .
+#      .         .       .      .
+# r_{1,Z,T} r_{2,Z,T} .... r_{S,Z,T}
+12 5
+5 12
+5 12
+12 5
+
+# ocekavana cena: 1. den zbozi 1: 10*1+ 9*1+1*2=21
+#                 1. den zbozi 2: 10*1+10*1    =20
+#                 2. den zbozi 1: 5*1+7*1      =12
+#                 2. den zbozi 2: 5*1+5*1      =10
+#                         celkem:              =63
+# zkouska: poptavano 17*4=68, pocatecni zasoby 6, prepraveno 62 zbozi (63-1)
+#   68-6=62, vse dopraveno po nejlevnejsich cestach s jednou nutnou vyjimkou a v
+#   supermarketech na konci 2. dne nic nezbylo.
+#   nadprodukce byla 10*8-62=18 kusu zbozi.
+# Mohou vyjit nasledujici hodnoty, aby to davalo smysl:
+#   62 - neuvazovana cena cest, jinak optimum
+#	63 - nejmensi spravne reseni, optimalni reseni, supermarkety si chytre
+#        "nakreckuji" zbozi na dalsi dny, po druhem dni v supermarketech nic
+#        nezbyde a tovarny zbytky vyhodi
+#   67 - supermarkety neumi prediktivne "kreckovat" zbozi, jinak plati
+#        predchozi bod
+#   80 - vse rozvezeno, ale nerespektovana cena cest
+#   81 - tovarny musi rozvest veskere zbozi co maji do nejakych supermarektu,
+#        jinak optimum
+#   160 - nejhorsi scenar, vse se vozi po spatnych cestach. Pravdepodobne
+#         zamenena minimalizace za maximalizaci
+#   akceptovano je reseni pod 100, spravne je 63, 67 nebo 81 dle pristupu
+#   k problemu. Podobny je soubor test_optim_sink.txt, kde je eliminovana
+#   moznost 81.

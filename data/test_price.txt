@@ -1,0 +1,76 @@
+# Data pro semestralni praci KIV/PT 2020/2021
+# Vytvoreno systemem "Lubos", 31.8.2020.
+#
+# prazdne radky nebo radky zacinajici znakem # se ingoruji
+# v opacnem pripade jsou na kazde radce ciselne hodnoty oddelene mezerou
+# data jsou popsana vzdy nad prislusnym blokem dat, bloky jsou oddelene
+# prazdnym radkem nasledujici radkem viditelne oznacenym vyrazem "BLOK:"
+
+# BLOK: pocet tovaren D, pocet supermarketu S, pocet druhu zbozi Z, pocet dni T
+2 2 2 2
+
+# BLOK: Cena prevozu jednoho zbozi c_{s,d}
+#
+# c_{1,1} c_{2,1} ... c_{S,1}
+# c_{1,2} c_{2,2} ... c_{S,2}
+#    .      .    .      .
+#    .      .     .     .
+#    .      .      .    .
+# c_{1,D} c_{2,D} ... c_{S,D}
+1 1
+1 100
+
+# BLOK: Pocatecni skladove zasoby q_{z,s}
+#
+# q_{1,1} q_{1,2} ... q_{1,S}
+# q_{2,1} q_{2,2} ... q_{2,S}
+#    .      .    .      .
+#    .      .     .     .
+#    .      .      .    .
+# q_{Z,1} q_{Z,2} ... q_{Z,S}
+# ze zacatku supermarkety nic nemaji
+0 0
+0 0
+
+# BLOK: Produkce tovaren p_{d,z,t}
+# p_{1,1,1} p_{2,1,1} .... p_{D,1,1}
+# p_{1,1,2} p_{2,1,2} .... p_{D,1,2}
+#      .         .    .         .
+#      .         .     .        .
+#      .         .      .       .
+# p_{1,1,T} p_{2,1,T} .... p_{D,1,T}
+# p_{1,2,1} p_{2,2,1} .... p_{D,2,1}
+# p_{1,2,2} p_{2,2,2} .... p_{D,2,2}
+#      .         .    .         .
+#      .         .     .        .
+#      .         .      .       .
+#      .         .       .      .
+# p_{1,Z,T} p_{2,Z,T} .... p_{D,Z,T}
+10 10
+10 10
+10 10
+10 10
+
+# BLOK: Poptavka zbozi r_{s,z,t}
+# r_{1,1,1} r_{2,1,1} .... r_{S,1,1}
+# r_{1,1,2} r_{2,1,2} .... r_{S,1,2}
+#      .         .    .         .
+#      .         .     .        .
+#      .         .      .       .
+# r_{1,1,T} r_{2,1,T} .... r_{S,1,T}
+# r_{1,2,1} r_{2,2,1} .... r_{S,2,1}
+# r_{1,2,2} r_{2,2,2} .... r_{S,2,2}
+#      .         .    .         .
+#      .         .     .        .
+#      .         .      .       .
+#      .         .       .      .
+# r_{1,Z,T} r_{2,Z,T} .... r_{S,Z,T}
+# Jednou to chce jeden, jednou druhy
+0 20
+0 20
+20 0
+20 0
+
+# Ocekavana cena: prvni den: 1*20+100*20=2020
+#                 druhy den: 1*20+  1*20=  40
+#                    celkem:             2060
